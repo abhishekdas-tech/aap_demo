@@ -1,0 +1,11 @@
+---
+- name: Remove the old local usernames
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Remove old usernames except nw_automation
+      cisco.ios.ios_user:
+        aggregate:
+          - name: nw_automation
+          - name: "{{ new_username }}"
+        purge: true
