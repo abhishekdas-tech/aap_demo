@@ -1,6 +1,6 @@
 ---
 - name: Configure New VLAN
-  hosts: VIOS1
+  hosts: "{{ device }}"
   gather_facts: false
   tasks:
     - name: Configure VLANS
