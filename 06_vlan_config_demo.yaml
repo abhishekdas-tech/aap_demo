@@ -1,0 +1,12 @@
+---
+- name: Configure New VLAN
+  hosts: VIOS1
+  gather_facts: false
+  tasks:
+    - name: Configure VLANS
+      cisco.ios.ios_vlans:
+        config:
+          - name: "VLAN0{{ new_vlan }}"
+            vlan_id: "{{ new_vlan }}"
+            state: active
+            shutdown: disabled
