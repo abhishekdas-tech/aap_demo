@@ -15,7 +15,7 @@
 
     - name: Send to template
       ansible.builtin.set_fact:
-        snow_update: "{{ lookup('template', 'snow_update_template.j2') }}"
+        snow_update: "{{ lookup('template', 'demo.j2') }}"
       vars:
         heading: "{{ ansible_play_name }}"
 
