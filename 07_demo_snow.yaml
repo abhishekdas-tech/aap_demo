@@ -13,11 +13,11 @@
       ansible.builtin.set_fact:
         show_command: "{{ output.stdout }}"
 
-    - name: Send to template
-      ansible.builtin.set_fact:
-        snow_update: "{{ lookup('template', 'demo.j2') }}"
-      vars:
-        heading: "{{ ansible_play_name }}"
+    # - name: Send to template
+    #   ansible.builtin.set_fact:
+    #     snow_update: "{{ lookup('template', 'demo.j2') }}"
+    #   vars:
+    #     heading: "{{ ansible_play_name }}"
 
     - name: Slack update
       ansible.builtin.include_tasks: 08_snow_notifications.yaml
