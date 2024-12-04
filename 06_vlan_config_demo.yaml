@@ -10,3 +10,8 @@
             vlan_id: "{{ new_vlan }}"
             state: active
             shutdown: disabled
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        var: output
