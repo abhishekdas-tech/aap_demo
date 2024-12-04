@@ -1,6 +1,6 @@
 - name: Slack Update
   community.general.slack:
-    token: xoxb-8094596251125-8097469371314-4flY3esYBaewv8lJnbwERrLN
+    token: sdsd
     msg: Testing
     color: danger
     channel: "#ansible-notifications"
