@@ -1,6 +1,6 @@
 ---
 - name: Demo on ios_config
-  hosts: ciscoVIOS
+  hosts: ciscoIOS
   gather_facts: false
   tasks:
     - name: Configure Interface
