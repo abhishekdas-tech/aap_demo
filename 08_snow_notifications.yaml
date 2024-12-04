@@ -1,7 +1,7 @@
 - name: Slack Update
   community.general.slack:
     token: xoxb-8094596251125-8097469371314-4flY3esYBaewv8lJnbwERrLN
-    msg: "{{ message }}"
-    color: "{{ status_type }}"
+    msg: Testing
+    color: danger
     channel: "#ansible-notifications"
   delegate_to: localhost
