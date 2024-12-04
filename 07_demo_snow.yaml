@@ -19,18 +19,21 @@
       vars:
         heading: "{{ ansible_play_name }}"
 
-    - name: Update SNOW Ticket
-      servicenow.servicenow.snow_record:
-        username: admin
-        password: /W1gsooCFT*2
-        instance: dev283883
-        state: present
-        number: INC0010001
-        data:
-          work_notes: "{{ snow_update }}"
-      register: snow_output
-      delegate_to: localhost
+    - name: Slack update
+      ansible.builtin.include_tasks: 08_snow_notifications.yaml
 
-    - name: Display output
-      ansible.builtin.debug:
-        var: snow_output
+    # - name: Update SNOW Ticket
+    #   servicenow.servicenow.snow_record:
+    #     username: admin
+    #     password: /W1gsooCFT*2
+    #     instance: dev283883
+    #     state: present
+    #     number: INC0010001
+    #     data:
+    #       work_notes: "{{ snow_update }}"
+    #   register: snow_output
+    #   delegate_to: localhost
+
+    # - name: Display output
+    #   ansible.builtin.debug:
+    #     var: snow_output
