@@ -6,15 +6,15 @@
     new_vlan: 11
     vlan_name: Test_VLAN
   tasks:
-    - name: Install servicenow
-      ansible.builtin.command:
-        cmd: ansible-galaxy collection install servicenow.servicenow
-      register: output
-      delegate_to: localhost
+    # - name: Install servicenow
+    #   ansible.builtin.command:
+    #     cmd: ansible-galaxy collection install servicenow.servicenow
+    #   register: output
+    #   delegate_to: localhost
 
-    - name: Pause for 30 seconds
-      ansible.builtin.pause:
-        seconds: 30
+    # - name: Pause for 30 seconds
+    #   ansible.builtin.pause:
+    #     seconds: 30
 
     - name: Configure VLANS
       cisco.ios.ios_vlans:
