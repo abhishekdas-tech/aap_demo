@@ -2,7 +2,17 @@
 - name: Configure New VLAN
   hosts: "{{ device }}"
   gather_facts: false
-  tasks:
+    tasks:
+    - name: Install servicenow
+      ansible.builtin.command:
+        cmd: ansible-galaxy collection install servicenow.servicenow
+      register: output
+      delegate_to: localhost
+
+    - name: Pause for 30 seconds
+      ansible.builtin.pause:
+        seconds: 30
+
     - name: Configure VLANS
       cisco.ios.ios_vlans:
         config:
@@ -12,7 +22,7 @@
             shutdown: disabled
       register: output
 
-    - name: Allow new vlan on trunk port
+    - name: Allow vlan on trunk port
       cisco.ios.ios_config:
         lines:
           - switchport trunk allowed vlan add {{ new_vlan }}
@@ -26,3 +36,15 @@
     - name: Save the configuration
       cisco.ios.ios_config:
         save_when: always
+
+    - name: Update ServiceNow Incident
+      servicenow.servicenow.snow_record:
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
+        table: sc_req_item
+        state: present
+        number: "{{ snow_request }}"
+        data:
+          work_notes: "{{ new_vlan }} has been successfully configured"
+
