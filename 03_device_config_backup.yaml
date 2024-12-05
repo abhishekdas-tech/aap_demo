@@ -1,6 +1,6 @@
 ---
 - name: Demo on ios_config
-  hosts: ciscoIOS
+  hosts: CSR1
   gather_facts: false
   tasks:
     - name: Demo on backup
