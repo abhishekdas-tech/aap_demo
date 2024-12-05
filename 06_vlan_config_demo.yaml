@@ -6,12 +6,23 @@
     - name: Configure VLANS
       cisco.ios.ios_vlans:
         config:
-          - name: "VLAN0{{ new_vlan }}"
+          - name: "{{ vlan_name }}"
             vlan_id: "{{ new_vlan }}"
             state: active
             shutdown: disabled
       register: output
 
-    - name: Display output
-      ansible.builtin.debug:
-        var: output
+    - name: Allow new vlan on trunk port
+      cisco.ios.ios_config:
+        lines:
+          - switchport trunk allowed vlan add {{ new_vlan }}
+        parents: "{{ item }}" 
+      loop:
+        - interface GigabitEthernet1/0
+        - interface GigabitEthernet1/1
+        - interface GigabitEthernet1/2
+        - interface GigabitEthernet1/3
+
+    - name: Save the configuration
+      cisco.ios.ios_config:
+        save_when: always
