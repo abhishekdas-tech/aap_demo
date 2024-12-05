@@ -1,7 +1,0 @@
-- name: Slack Update
-  community.general.slack:
-    token: sdsd
-    msg: Testing
-    color: danger
-    channel: "#ansible-notifications"
-  delegate_to: localhost
