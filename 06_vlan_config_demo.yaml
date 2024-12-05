@@ -47,3 +47,4 @@
         number: "{{ snow_request }}"
         data:
           work_notes: "VLAN {{ new_vlan }} has been successfully configured"
+          state: 3
