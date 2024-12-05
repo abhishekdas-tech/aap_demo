@@ -2,7 +2,10 @@
 - name: Configure New VLAN
   hosts: "{{ device }}"
   gather_facts: false
-    tasks:
+  vars:
+    new_vlan: 11
+    vlan_name: Test_VLAN
+  tasks:
     - name: Install servicenow
       ansible.builtin.command:
         cmd: ansible-galaxy collection install servicenow.servicenow
@@ -47,4 +50,3 @@
         number: "{{ snow_request }}"
         data:
           work_notes: "{{ new_vlan }} has been successfully configured"
-
