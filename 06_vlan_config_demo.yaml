@@ -46,4 +46,4 @@
         state: present
         number: "{{ snow_request }}"
         data:
-          work_notes: "{{ new_vlan }} has been successfully configured"
+          work_notes: "VLAN {{ new_vlan }} has been successfully configured"
