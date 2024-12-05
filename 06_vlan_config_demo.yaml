@@ -2,9 +2,6 @@
 - name: Configure New VLAN
   hosts: "{{ device }}"
   gather_facts: false
-  vars:
-    new_vlan: 11
-    vlan_name: Test_VLAN
   tasks:
     # - name: Install servicenow
     #   ansible.builtin.command:
