@@ -27,7 +27,7 @@
       cisco.ios.ios_config:
         save_when: always
 
-    - name: Update ServiceNow Incident
+    - name: Update ServiceNow Request
       servicenow.servicenow.snow_record:
         username: "{{ snow_username }}"
         password: "{{ snow_password }}"
